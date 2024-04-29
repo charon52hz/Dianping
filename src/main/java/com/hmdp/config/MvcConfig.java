@@ -14,6 +14,10 @@ public class MvcConfig implements WebMvcConfigurer {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 注册拦截器
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new RefreshTokenInterceptor(stringRedisTemplate)).addPathPatterns("/**").order(0);
